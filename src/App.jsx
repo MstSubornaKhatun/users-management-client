@@ -1,5 +1,8 @@
 
 import './App.css'
+import Users from './components/Users';
+
+const usersPromise = fetch('http://localhost:3000/users').then(res =>res.json());
 
 function App() {
 
@@ -7,6 +10,7 @@ function App() {
     <>
      
       <h1>User Management App</h1>
+      <Users usersPromise={usersPromise}></Users>
   
     </>
   )
