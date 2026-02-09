@@ -1,7 +1,8 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 
 const Users = ({usersPromise}) => {
-    const users = use(usersPromise);
+    const initialUsers = use(usersPromise);
+    const [users, setUsers]=useState(initialUsers)
     console.log(users); 
 
     const handleAddUser = e => {
@@ -22,7 +23,10 @@ const Users = ({usersPromise}) => {
         })
         .then(res=>res.json())
         .then(data => {
-            console.log('data after post', data); // data after post {name: 'Hanna', email: '33suborna@gmail.com'}
+            console.log('new users form server', data); 
+            const newUsers = [...users, data];
+            setUsers(newUsers);
+            // e.target.reset();
         })
     }
 
@@ -39,7 +43,7 @@ const Users = ({usersPromise}) => {
 
 
             {
-                users.map(user =><p key={user.id}>{user.name}: {user.email}</p>)
+                users.map(user =><p key={user.id}>{user.name}: {user.email} <button>X</button></p>)
             }
             
         </div>
