@@ -22,7 +22,7 @@ const Users = ({usersPromise}) => {
         })
         .then(res=>res.json())
         .then(data => {
-            console.log('data after post', data)
+            console.log('data after post', data); // data after post {name: 'Hanna', email: '33suborna@gmail.com'}
         })
     }
 
